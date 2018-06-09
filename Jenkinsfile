@@ -25,11 +25,21 @@ pipeline{
         	}
         }        
         
+        stage("Docker login") {
+      		steps {
+        		withCredentials([[$class: 'UsernamePasswordMultiBinding', credentialsId: 'leszko',
+                          usernameVariable: 'USERNAME', passwordVariable: 'PASSWORD']]) {
+          		sh "docker login --username $USERNAME --password $PASSWORD"
+        	}
+      		}
+    	}
+        
+        
         stage("Docker build"){
         	steps{
-        	    sh "sudo docker login --username mahipatluri --password mahicyrus123"        	
-        		sh "sudo docker build -t mahipatluri/calculator ."
-        		sh "sudo docker push mahipatluri/calculator"
+        	    sh "docker login --username mahipatluri --password mahicyrus123"        	
+        		sh "docker build -t mahipatluri/calculator ."
+        		sh "docker push mahipatluri/calculator"
         	}
         }
         
