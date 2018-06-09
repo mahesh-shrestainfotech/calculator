@@ -19,6 +19,21 @@ pipeline{
             }
         }
         
+        stage("Package"){
+        	steps{
+        		sh "./gradlew build"
+        	}
+        }        
+        
+        stage("Docker build"){
+        	steps{
+        	    sh "docker login --username mahipatluri --password mahicyrus123"        	
+        		sh "docker build -t mahipatluri/calculator ."
+        		sh "docker push mahipatluri/calculator"
+        	}
+        }
+        
+        
         
     }
 }
