@@ -27,9 +27,9 @@ pipeline{
         
         stage("Docker build"){
         	steps{
-        	    sh "docker login --username mahipatluri --password mahicyrus123"        	
-        		sh "docker build -t mahipatluri/calculator ."
-        		sh "docker push mahipatluri/calculator"
+        	    sh "sudo docker login --username mahipatluri --password mahicyrus123"        	
+        		sh "sudo docker build -t mahipatluri/calculator ."
+        		sh "sudo docker push mahipatluri/calculator"
         	}
         }
         
