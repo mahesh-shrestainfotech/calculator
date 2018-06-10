@@ -30,8 +30,8 @@ pipeline{
         stage("Docker build"){
         	steps{
         	    sh "docker login --username egiantsdocker --password Egaints#1"        	
-        		sh "docker build -t mahipatluri/calculator ."
-        		sh "docker push mahipatluri/calculator"
+        		sh "docker build -t egiantsdocker/calculator ."
+        		sh "docker push egiantsdocker/calculator"
         	}
         }
         
